@@ -26,7 +26,7 @@
                         <field name="name"/>
                         <field name="description"/>
                         <field name="expected_price"/>
-                        <field name="selling_price"/>
+                        <field name="selling_price" readonly="1"/>
                         <field name="state"/>
                         <field name="date_availability"/>
                         <field name="bedrooms"/>
