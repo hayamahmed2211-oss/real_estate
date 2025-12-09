@@ -1,0 +1,37 @@
+version: "3.8"
+
+services:
+  db:
+    image: postgres:18
+    container_name: odoo18-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: odoo
+      POSTGRES_PASSWORD: odoo
+      POSTGRES_DB: postgres
+    volumes:
+      - odoo18_db_data:/var/lib/postgresql       # <-- FIXED
+    ports:
+      - "5440:5432"
+
+  odoo:
+    image: odoo:18
+    container_name: odoo18-web
+    depends_on:
+      - db
+    ports:
+      - "8090:8069"
+      - "8072:8072"
+    volumes:
+      - ./addons:/mnt/extra-addons:Z
+      - ./odoo.conf:/etc/odoo/odoo.conf:ro
+    environment:
+      ODOO_DB_HOST: db
+      ODOO_DB_PORT: 5432
+      ODOO_DB_USER: odoo
+      ODOO_DB_PASSWORD: odoo
+    command: ["--config", "/etc/odoo/odoo.conf", "--dev=reload"]
+    restart: unless-stopped
+
+volumes:
+  odoo18_db_data: {}
