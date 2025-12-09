@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Root Menu (Shown in App Switcher) -->
+    <menuitem 
+        id="estate_menu_root" 
+        name="Real Estate" 
+        sequence="10"
+    />
+
+    <!-- First Level Menu (Top Bar Menu) -->
+    <menuitem 
+        id="estate_menu_advertisements" 
+        name="Advertisements"
+        parent="estate_menu_root"
+        sequence="10"
+    />
+
+    <!-- Action Menu (Opens the list/form views) -->
+    <menuitem 
+        id="estate_menu_properties"
+        name="Properties"
+        parent="estate_menu_advertisements"
+        action="action_estate_property"
+        sequence="10"
+    />
+
+</odoo>

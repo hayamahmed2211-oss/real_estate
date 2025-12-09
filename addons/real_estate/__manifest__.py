@@ -7,7 +7,8 @@
     "data": [
         "security/security.xml",
         "security/ir.model.access.csv",
-        "views/property_views.xml"
+        "views/real_property_views.xml",
+        "views/estate_menus.xml"
     ],
     "installable": True,
     "application": True
